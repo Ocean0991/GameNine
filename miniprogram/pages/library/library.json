@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "我的游戏库",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "game-card": "../../components/game-card/game-card"
+  }
+}
+
+
+
+
+
+
