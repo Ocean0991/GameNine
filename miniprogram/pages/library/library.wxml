@@ -1,0 +1,123 @@
+<!--pages/library/library.wxml-->
+<view class="library-container">
+  <!-- 状态标签栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'done' ? 'active' : ''}}" 
+          data-tab="done" 
+          bindtap="onTabChange">
+      玩过
+    </view>
+    <view class="tab-item {{currentTab === 'playing' ? 'active' : ''}}" 
+          data-tab="playing" 
+          bindtap="onTabChange">
+      在玩
+    </view>
+    <view class="tab-item {{currentTab === 'wish' ? 'active' : ''}}" 
+          data-tab="wish" 
+          bindtap="onTabChange">
+      想玩
+    </view>
+    <view class="tab-item {{currentTab === 'shelved' ? 'active' : ''}}" 
+          data-tab="shelved" 
+          bindtap="onTabChange">
+      搁置
+    </view>
+  </view>
+
+  <!-- 游戏列表 -->
+  <view class="game-list">
+    <view wx:if="{{gameList.length === 0 && !isLoading}}" class="empty-state">
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit" />
+      <text class="empty-text">还没有游戏，去添加吧~</text>
+      <button class="add-btn" bindtap="addGame">添加游戏</button>
+    </view>
+
+    <view wx:for="{{gameList}}" wx:key="bgmId" class="game-item" bindtap="goToGameDetail" data-bgm-id="{{item.bgmId}}">
+      <image class="game-cover" src="{{item.gameInfo.cover || '/images/default-cover.png'}}" mode="aspectFill" />
+      <view class="game-info">
+        <text class="game-title">{{item.gameInfo.title}}</text>
+        <view class="game-meta">
+          <view class="rating" wx:if="{{item.rating}}">
+            <text class="star">★</text>
+            <text class="score">{{item.rating / 2}}</text>
+          </view>
+          <text class="date">{{item.updatedAt}}</text>
+        </view>
+        <text class="comment" wx:if="{{item.comment}}">{{item.comment}}</text>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view wx:if="{{isLoading}}" class="loading">
+      <text>加载中...</text>
+    </view>
+
+    <!-- 没有更多 -->
+    <view wx:if="{{!hasMore && gameList.length > 0}}" class="no-more">
+      <text>没有更多了</text>
+    </view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab-button" bindtap="addGame">
+    <text class="fab-icon">+</text>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
