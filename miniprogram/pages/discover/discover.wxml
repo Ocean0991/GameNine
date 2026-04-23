@@ -1,0 +1,184 @@
+<!--pages/discover/discover.wxml-->
+<view class="container">
+  <!-- 筛选类型切换 -->
+  <view class="filter-tabs">
+    <view class="tab-item {{filterType === 'platform' ? 'active' : ''}}" 
+          data-type="platform" 
+          bindtap="switchFilterType">
+      平台
+    </view>
+    <view class="tab-item {{filterType === 'genre' ? 'active' : ''}}" 
+          data-type="genre" 
+          bindtap="switchFilterType">
+      类型
+    </view>
+    <view class="tab-item {{filterType === 'rank' ? 'active' : ''}}" 
+          data-type="rank" 
+          bindtap="switchFilterType">
+      排行榜
+    </view>
+  </view>
+
+  <!-- 平台筛选 -->
+  <view class="filter-content" wx:if="{{filterType === 'platform'}}">
+    <view class="platform-grid">
+      <view class="platform-item {{selectedPlatform === item.id ? 'active' : ''}}"
+            wx:for="{{platforms}}"
+            wx:key="id"
+            data-platform-id="{{item.id}}"
+            bindtap="selectPlatform">
+        <text class="platform-icon">{{item.icon}}</text>
+        <text class="platform-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 类型筛选 -->
+  <view class="filter-content" wx:if="{{filterType === 'genre'}}">
+    <view class="genre-grid">
+      <view class="genre-item {{selectedGenre === item.id ? 'active' : ''}}"
+            wx:for="{{genres}}"
+            wx:key="id"
+            data-genre-id="{{item.id}}"
+            bindtap="selectGenre">
+{{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏列表 -->
+  <view class="game-list" wx:if="{{filterType !== 'rank'}}">
+    <view class="game-card" 
+          wx:for="{{gameList}}" 
+          wx:key="bgmId"
+          data-bgm-id="{{item.bgmId}}"
+          bindtap="onGameTap">
+      <image class="game-cover"rc="{{item.cover}}" mode="aspectFill" />
+      <view class="game-info">
+        <text class="game-title">{{item.titleCN || item.title}}</text>
+        <view class="game-meta">
+          <text class="game-rating" wx:if="{{item.avgRating > 0}}">⭐ {{item.avgRating}}</text>
+          <text class="game-platform">{{item.platforms[0] || ''}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="rank-list" wx:if="{{filterType === 'rank'}}">
+    <view class="rank-item" 
+          wx:for="{{rankList}}" 
+          wx:key="bgmId"
+          wx:index="index"
+          data-bgm-id="{{item.bgmId}}"
+          bindtap="onGameTap">
+      <view class="rank-number {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+      <image class="rank-cover"rc="{{item.cover}}" mode="aspectFill" />
+      <view class="rank-info">
+        <text class="rank-title">{{item.titleCN || item.title}}</text>
+        <view class="rank-meta">
+          <text class="rank-rating">⭐ {{item.avgRating}}</text>
+          <text class="rank-count">{{index + 1}}名</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && gameList.length === 0 && rankList.length === 0}}">
+    <text class="empty-text">暂无数据</text>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
